@@ -149,6 +149,26 @@ function claim() {
   document.getElementById("points").innerText = points;
 }
 
+const rewardContractAddress = "YOUR_REWARD_CONTRACT";
+const rewardAbi = [
+  "function rewardPlayer(address player, uint256 amount)"
+];
+
+async function sendReward(player, amount) {
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const signer = provider.getSigner();
+  const contract = new ethers.Contract(
+    rewardContractAddress,
+    rewardAbi,
+    signer
+  );
+
+  await contract.rewardPlayer(
+    player,
+    ethers.utils.parseUnits(amount.toString(), 18)
+  );
+}
+
 
 </script>
 
