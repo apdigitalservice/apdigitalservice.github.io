@@ -1,18 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "Auto Reward Sender",
+  "name": "AP Token P2P Game (Polygon)",
   "version": "1.0",
-  "description": "Automatically sends rewards to a specified address.",
-  "permissions": ["storage", "alarms", "notifications"],
+  "description": "P2P browser game with automatic AP token rewards on Polygon",
+  "permissions": ["storage", "notifications"],
   "action": {
-    "default_popup": "index.html",
-    "default_icon": {
-      "16": "icon.png",
-      "48": "icon.png",
-      "128": "icon.png"
-    }
-  },
-  "background": {
-    "service_worker": "index.html"
+    "default_popup": "index.html"
   }
 }
