@@ -1,52 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Auto Reward Sender</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; }
-        input, button { padding: 10px; margin: 5px 0; width: 100%; }
-    </style>
+  <meta charset="UTF-8">
+  <title>AP Token P2P Game on Polygon</title>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.12.0/dist/web3.min.js"></script>
+  <style>
+    body { font-family: Arial; text-align: center; padding: 50px; background: #f0f0f0; }
+    button { padding: 10px 20px; margin: 10px; font-size: 18px; }
+    #status { margin-top: 20px; }
+  </style>
 </head>
 <body>
-    <h1>Auto Reward Sender</h1>
-    <label>Wallet Address:</label>
-    <input type="text" id="wallet" placeholder="Enter recipient wallet address" />
-    <label>Reward Amount:</label>
-    <input type="number" id="amount" placeholder="Enter reward amount" />
-    <label>Interval (seconds):</label>
-    <input type="number" id="interval" placeholder="Interval in seconds" />
-    <button id="startBtn">Start Auto Rewards</button>
-    <p id="status"></p>
+  <h1>🎮 AP Token P2P Game</h1>
+  <p>Play and earn AP tokens automatically on Polygon!</p>
 
-    <script>
-        // Utility to simulate sending reward
-        function sendReward(wallet, amount) {
-            // Replace this with real blockchain/web3 integration if needed
-            console.log(`Sent ${amount} reward to ${wallet}`);
-            document.getElementById('status').textContent = `Sent ${amount} reward to ${wallet} at ${new Date().toLocaleTimeString()}`;
+  <button id="connectWallet">Connect Wallet</button>
+  <button id="playGame" disabled>Play Game</button>
+
+  <p id="status">Wallet not connected</p>
+
+  <script>
+    const AP_CONTRACT = "0xff568ef8231a9df5fb87e8160f994a44ca346b52"; // AP token on Polygon
+    const AP_ABI = [
+      {"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"type":"function"},
+      {"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"type":"function"}
+    ];
+
+    let web3, accounts, apContract;
+    const statusEl = document.getElementById("status");
+    const playBtn = document.getElementById("playGame");
+
+    // Connect wallet (Polygon)
+    document.getElementById("connectWallet").onclick = async () => {
+      if (window.ethereum) {
+        web3 = new Web3(window.ethereum);
+
+        // Switch to Polygon Mainnet if not already
+        try {
+          await ethereum.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId: '0x89' }] // 0x89 = Polygon Mainnet
+          });
+        } catch (switchError) {
+          if (switchError.code === 4902) {
+            alert("Polygon network not found in your wallet. Add it manually.");
+          } else {
+            console.error(switchError);
+          }
         }
 
-        let rewardInterval;
+        try {
+          accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+          statusEl.textContent = `Connected: ${accounts[0]}`;
+          apContract = new web3.eth.Contract(AP_ABI, AP_CONTRACT);
+          playBtn.disabled = false;
+        } catch (err) {
+          statusEl.textContent = `Error: ${err.message}`;
+        }
+      } else {
+        alert("Please install MetaMask or another wallet that supports Polygon.");
+      }
+    };
 
-        document.getElementById('startBtn').addEventListener('click', () => {
-            const wallet = document.getElementById('wallet').value.trim();
-            const amount = parseFloat(document.getElementById('amount').value);
-            const interval = parseInt(document.getElementById('interval').value) * 1000;
+    // Simple game logic (dice roll)
+    playBtn.onclick = async () => {
+      const player = accounts[0];
+      const rewardAmount = web3.utils.toWei("1", "ether"); // 1 AP token per win
+      const roll = Math.floor(Math.random() * 6) + 1;
 
-            if (!wallet || isNaN(amount) || isNaN(interval)) {
-                alert("Please enter valid wallet, amount, and interval.");
-                return;
-            }
+      statusEl.textContent = `You rolled a ${roll}...`;
 
-            if (rewardInterval) clearInterval(rewardInterval);
+      if (roll >= 4) { // win on 4,5,6
+        statusEl.textContent += ` You win! Sending 1 AP token...`;
 
-            rewardInterval = setInterval(() => {
-                sendReward(wallet, amount);
-            }, interval);
-
-            document.getElementById('status').textContent = `Auto reward started for ${wallet}, every ${interval / 1000} seconds.`;
-        });
-    </script>
+        try {
+          await apContract.methods.transfer(player, rewardAmount).send({ from: accounts[0] });
+          statusEl.textContent += " ✅ Reward sent!";
+        } catch (err) {
+          statusEl.textContent += " ❌ Error sending reward: " + err.message;
+        }
+      } else {
+        statusEl.textContent += " You lost! Try again.";
+      }
+    };
+  </script>
 </body>
 </html>
