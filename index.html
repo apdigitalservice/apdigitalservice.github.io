@@ -99,6 +99,20 @@ async function ensurePolygon() {
     }
   }
 }
+
+async function connectWallet() {
+  if (!window.ethereum) {
+    alert("Use MetaMask / Trust Wallet");
+    return;
+  }
+  await ensurePolygon();
+  const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+  userAddress = accounts[0];
+  document.getElementById("wallet").innerText = userAddress;
+}
+
+
+
 </script>
 
 
