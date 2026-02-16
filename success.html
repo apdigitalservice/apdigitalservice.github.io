@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Success</title>
+<link rel="stylesheet" href="style.css">
+
+<!-- PDF Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+</head>
+
+<body>
+
+<div id="invoice">
+
+<h2>Order Successful ✅</h2>
+
+<p><strong>Product:</strong> <span id="product"></span></p>
+<p><strong>Product Code:</strong> <span id="code"></span></p>
+<p><strong>Price:</strong> Rs. <span id="price"></span></p>
+<p><strong>Total:</strong> Rs. <span id="total"></span></p>
+<p><strong>Payment Method:</strong> Khalti</p>
+<p><strong>Mobile:</strong> <span id="mobile"></span></p>
+<p><strong>Transaction ID:</strong> <span id="txn"></span></p>
+<p><strong>Date:</strong> <span id="date"></span></p>
+<p><strong>Bill No:</strong> <span id="bill"></span></p>
+
+</div>
+
+<br>
+
+<button onclick="downloadPDF()">Download PDF</button>
+
+<script src="success.js"></script>
+
+</body>
+</html>
