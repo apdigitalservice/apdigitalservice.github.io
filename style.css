@@ -1,155 +1,114 @@
-/* Reset */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
 }
 
 body {
-  background: #071428;
-  color: white;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background: #f4f4f4;
 }
 
-/* ================= TOP BAR ================= */
-
-.top-bar {
+/* HEADER & NAV */
+.header {
+  background: #111;
+  padding: 15px 0;
+  color: #fff;
+}
+.header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  background: #0d1b2a;
-  font-size: 18px;
 }
-
-.balance {
-  color: #00ffcc;
-  font-weight: bold;
-}
-
-/* ================= BANNER ================= */
-
-.banner {
-  margin: 20px;
-  padding: 40px 20px;
-  text-align: center;
-  border-radius: 15px;
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
-  animation: fadeSlide 1.2s ease-in-out;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.banner:hover {
-  transform: scale(1.03);
-  box-shadow: 0 10px 30px rgba(0, 114, 255, 0.5);
-}
-
-.banner h2 {
-  font-size: 28px;
-  margin-bottom: 10px;
-  animation: fadeUp 1.5s ease;
-}
-
-.banner p {
-  font-size: 18px;
-  opacity: 0.9;
-  animation: fadeUp 2s ease;
-}
-
-/* ================= SECTION TITLE ================= */
-
-.section-title {
-  text-align: center;
-  margin: 20px 0;
-  font-size: 22px;
-}
-
-/* ================= CATEGORIES ================= */
-
-.categories {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
-  padding: 20px;
-}
-
-.card {
-  background: #142850;
-  padding: 20px;
-  border-radius: 12px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  animation: fadeUp 1s ease;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  background: #1f4068;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-}
-
-/* ================= BOTTOM NAV ================= */
-
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: #0d1b2a;
-  display: flex;
-  justify-content: space-around;
-  padding: 12px 0;
-}
-
-.bottom-nav a {
+.nav a {
   color: white;
+  margin-right: 20px;
   text-decoration: none;
-  font-size: 14px;
+}
+.nav a:last-child {
+  margin-right: 0;
 }
 
-/* ================= ANIMATIONS ================= */
-
-@keyframes fadeSlide {
-  from {
-    opacity: 0;
-    transform: translateY(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* HERO */
+.hero {
+  background: url('images/hero-bg.jpg') center/cover no-repeat;
+  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+}
+.hero .btn {
+  background: #e91e63;
+  color: white;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 15px;
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* PRODUCTS */
+.products {
+  padding: 50px 20px;
+  text-align: center;
+}
+.product-grid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.product-card {
+  background: white;
+  border-radius: 10px;
+  width: 260px;
+  padding: 20px;
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.15);
+}
+.product-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+.price {
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
 }
 
-/* ================= RESPONSIVE ================= */
-
-@media (min-width: 768px) {
-  .banner h2 {
-    font-size: 34px;
-  }
-
-  .banner p {
-    font-size: 20px;
-  }
-
-  .card {
-    padding: 25px;
-    font-size: 18px;
-  }
+/* NEWSLETTER */
+.newsletter {
+  background: #222;
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+.newsletter input {
+  padding: 10px;
+  width: 250px;
+  border-radius: 5px;
+  border: none;
+}
+.newsletter button {
+  padding: 10px 15px;
+  border: none;
+  background: #e91e63;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-@media (min-width: 1024px) {
-  .categories {
-    grid-template-columns: repeat(3, 1fr);
-  }
+/* FOOTER */
+.footer {
+  background: #000;
+  color: #ddd;
+  padding: 15px;
+  text-align: center;
+}
+.footer a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
 }
