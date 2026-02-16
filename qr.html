@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khalti Payment</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h2>Khalti QR Payment</h2>
+
+<!-- Khalti Logo -->
+<img src="https://seeklogo.com/images/K/khalti-logo-5F4B9F3E5D-seeklogo.com.png" width="120">
+
+<br><br>
+
+<!-- QR Image -->
+<div class="qr-box">
+  <img src="qr.png" width="200">
+</div>
+
+<br>
+
+<input type="text" id="mobileConfirm" placeholder="Enter Khalti Mobile Number">
+<input type="text" id="transactionId" placeholder="Enter Transaction ID">
+
+<br><br>
+
+<button onclick="placeOrder()">Place Order</button>
+
+<script src="qr.js"></script>
+</body>
+</html>
