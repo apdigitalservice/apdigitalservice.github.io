@@ -2,42 +2,84 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>AP Digital Service</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+<title>AP Digital Service</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="shortcut icon" href="favicon.png">
 </head>
-
 <body>
 
-<header class="top-bar">
-  <div class="logo">🎮 AP Digital Service</div>
-  <div class="balance">Rs. 0.00</div>
+<!-- NAVIGATION -->
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <h1>AP Digital Service</h1>
+    </div>
+    <nav class="nav">
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
 </header>
 
-<section class="banner">
-  <h2>FREE FIRE DIAMOND TOP-UP</h2>
-  <p>Fast • Secure • Trusted</p>
+<!-- HERO SECTION -->
+<section id="home" class="hero">
+  <div class="hero-content">
+    <h2>Welcome to AP Digital Service</h2>
+    <p>Your one-stop gaming & digital electronics store.</p>
+    <a href="#products" class="btn">Shop Now</a>
+  </div>
 </section>
 
-<h3 class="section-title">Purchase By Categories</h3>
+<!-- FEATURED PRODUCTS -->
+<section id="products" class="products">
+  <h2>Featured Products</h2>
+  <div class="product-grid">
 
-<div class="categories">
-  <div class="card" onclick="goToProduct('PUBG Mobile UC')">PUBG Mobile UC</div>
-  <div class="card" onclick="goToProduct('Free Fire Diamonds')">Free Fire Diamonds</div>
-  <div class="card" onclick="goToProduct('Mobile Legends')">Mobile Legends</div>
-  <div class="card" onclick="goToProduct('TikTok Coins')">TikTok Coins</div>
-  <div class="card" onclick="goToProduct('Level Up Pass')">Level Up Pass</div>
-  <div class="card" onclick="goToProduct('Gift Cards')">Gift Cards</div>
-</div>
+    <div class="product-card">
+      <img src="images/product1.jpg" alt="Product 1">
+      <h3>Gaming Monitor</h3>
+      <p>High refresh rate display</p>
+      <span class="price">₨12,500</span>
+    </div>
 
+    <div class="product-card">
+      <img src="images/product2.jpg" alt="Product 2">
+      <h3>Gaming Keyboard</h3>
+      <p>RGB Mechanical Keyboard</p>
+      <span class="price">₨4,800</span>
+    </div>
 
-<nav class="bottom-nav">
-  <a href="index.html">🏠 Home</a>
-  <a href="#">💬 Message</a>
-  <a href="account.html">👤 Account</a>
-  <a href="#">📱 WhatsApp</a>
-</nav>
+    <div class="product-card">
+      <img src="images/product3.jpg" alt="Product 3">
+      <h3>Gaming Chair</h3>
+      <p>Ergonomic Comfort</p>
+      <span class="price">₨9,300</span>
+    </div>
 
-<script src="script.js"></script>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <h2>Stay Updated</h2>
+  <p>Subscribe to our newsletter for deals & new products</p>
+  <form>
+    <input type="email" placeholder="Enter your email">
+    <button type="submit">Subscribe</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>&copy; 2026 AP Digital Service. All Rights Reserved.</p>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+  </div>
+</footer>
+
 </body>
 </html>
