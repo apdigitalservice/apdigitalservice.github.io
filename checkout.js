@@ -4,7 +4,7 @@ document.getElementById("code").innerText =
 document.getElementById("amount").innerText =
   localStorage.getItem("totalAmount");
 
-function payNow() {
+function goToQR() {
   let mobile = document.getElementById("mobile").value;
 
   if (mobile === "") {
@@ -12,8 +12,6 @@ function payNow() {
     return;
   }
 
-  let transactionId = "TXN" + Math.floor(Math.random() * 1000000);
-
-  document.getElementById("status").innerHTML =
-    "Payment Successful! <br> Transaction ID: " + transactionId;
+  localStorage.setItem("customerMobile", mobile);
+  window.location.href = "qr.html";
 }
