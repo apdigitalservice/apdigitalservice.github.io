@@ -1,0 +1,121 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #0b1220;
+  color: white;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 25px;
+  background: #020617;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+  color: #38bdf8;
+}
+
+.nav-links a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: #cbd5f5;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: radial-gradient(circle at top, #2563eb, #020617);
+}
+
+.hero h1 {
+  font-size: 40px;
+}
+
+.hero button {
+  margin-top: 20px;
+  padding: 12px 30px;
+  background: #22c55e;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+/* CATEGORIES */
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.category {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* STORE */
+.store {
+  padding: 30px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.product {
+  background: #020617;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.product img {
+  width: 90px;
+}
+
+.product span {
+  display: block;
+  margin: 10px 0;
+  color: #22c55e;
+  font-weight: bold;
+}
+
+.product button {
+  padding: 10px;
+  width: 100%;
+  background: #2563eb;
+  border: none;
+  border-radius: 8px;
+  color: white;
+}
+
+/* PAYMENT */
+.payment {
+  background: #020617;
+  text-align: center;
+  padding: 25px;
+}
+
+.note {
+  color: #94a3b8;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: black;
+}
